@@ -4,7 +4,6 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - opencv
   - pip
   - pip:
       - PyOpenGL
@@ -13,3 +12,4 @@ dependencies:
       - glfw
       - tqdm
       - streamlit
+      - opencv-contrib-python
