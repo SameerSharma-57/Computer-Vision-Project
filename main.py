@@ -12,6 +12,13 @@ def wait(seconds):
     import time
     time.sleep(seconds)
 
+def activateCondaEnv(env_name):
+    """Activate a conda environment."""
+    activate_script = f"conda activate {env_name}"
+    os.system(activate_script)
+
+activateCondaEnv("cv_project_1")
+
 # Set up directories
 UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
@@ -73,8 +80,8 @@ if submit:
     # Step 1: Calibration
     with st.spinner("Running Calibration..."):
         try:
-            # CalibrateCamera(str(CALIB_VIDEO_PATH), str(OUTPUT_DIR), square_size, n_images)
-            wait(2)
+            CalibrateCamera(str(CALIB_VIDEO_PATH), str(OUTPUT_DIR), square_size, n_images)
+            # wait(2)
             st.success("Calibration Complete ✅")
         except Exception as e:
             st.error(f"Calibration Failed ❌: {e}")
@@ -82,13 +89,13 @@ if submit:
     # Step 2: Estimating Extrinsics
     with st.spinner("Estimating Camera Extrinsics..."):
         try:
-            # EstimateExtrinsicUsingMarker(
-            #     str(MARKER_VIDEO_PATH),
-            #     str(OUTPUT_DIR / "calib_data.npz"),
-            #     str(OUTPUT_DIR / "extrinsics.npz"),
-            #     str(OUTPUT_DIR / "intermidiate")
-            # )
-            wait(2)
+            EstimateExtrinsicUsingMarker(
+                str(MARKER_VIDEO_PATH),
+                str(OUTPUT_DIR / "calib_data.npz"),
+                str(OUTPUT_DIR / "extrinsics.npz"),
+                str(OUTPUT_DIR / "intermidiate")
+            )
+            # wait(2)
             st.success("Extrinsics Estimation Complete ✅")
         except Exception as e:
             st.error(f"Extrinsics Estimation Failed ❌: {e}")
@@ -96,15 +103,15 @@ if submit:
     # Step 3: Rendering
     with st.spinner("Rendering Output Video..."):
         try:
-            # Render(
-            #     str(MARKER_VIDEO_PATH),
-            #     None,
-            #     str(OUTPUT_DIR),
-            #     str(OUTPUT_DIR / "extrinsics.npz"),
-            #     str(OUTPUT_DIR / "calib_data.npz"),
-            #     str(OBJ_FILE_PATH)
-            # )
-            wait(2)
+            Render(
+                str(MARKER_VIDEO_PATH),
+                None,
+                str(OUTPUT_DIR),
+                str(OUTPUT_DIR / "extrinsics.npz"),
+                str(OUTPUT_DIR / "calib_data.npz"),
+                str(OBJ_FILE_PATH)
+            )
+            # wait(2)
             output_video_path = "data/input/marker_video.mp4"
             if os.path.exists(output_video_path):
                 st.success("Rendering Complete ✅")
