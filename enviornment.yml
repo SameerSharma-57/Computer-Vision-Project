@@ -13,3 +13,4 @@ dependencies:
       - glfw
       - tqdm
       - streamlit
+      - opencv-python
