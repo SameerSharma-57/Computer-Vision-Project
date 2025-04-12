@@ -12,4 +12,4 @@ dependencies:
       - glfw
       - tqdm
       - streamlit
-      - opencv-contrib-python
+      - opencv-python-headless
