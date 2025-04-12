@@ -1,7 +1,0 @@
-opencv-python-headless
-PyOpenGL
-PyOpenGL_accelerate
-pyrr
-glfw
-tqdm
-streamlit
