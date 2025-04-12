@@ -1,2 +1,2 @@
 sudo apt update
-sudo apt install -y libg11—mesa-glx libgl1-mesa-dri
+sudo apt install -y libgl1—mesa-glx libgl1-mesa-dri
